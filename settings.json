@@ -15,6 +15,7 @@
   "buffer_font_family": "JetBrains Mono",
   "buffer_font_size": 16.0,
   "theme": {
+    "mode": "system",
     "light": "One Light",
     "dark": "JetBrains New Dark"
   },
@@ -34,16 +35,26 @@
     },
     "Python": {
       // "formatter": "python-lsp"
-      "formatter": "pyright"
+      "language_servers": ["basedpyright", "!pyright"],
+      "formatter": "basedpyright"
     },
-    "pyright": {
+    "basedpyright": {
       "settings": {
-        "python.analysis": {
+        "basedpyright.analysis": {
           "diagnosticMode": "workspace",
-          "typeCheckingMode": "strict"
+          "typeCheckingMode": "basic",
+          "inlayHints": {
+            "variableTypes": true,
+            "callArgumentNames": true,
+            "functionReturnTypes": true,
+            "genericTypes": true
+          }
         },
         "python": {
-          "pythonPath": ".venv/bin/python"
+          "pythonPath": "venv/bin/python",
+          "analisys": {
+            "extraPaths": ["lib*"]
+          }
         }
       }
     }
